@@ -6,4 +6,4 @@
 2. 安装maven，建议使用最新版本。  
 
 # 运行方式
-1. 通过java -jar 命令调用
+1. 通过java -jar <queryText> [1/2] 调用
