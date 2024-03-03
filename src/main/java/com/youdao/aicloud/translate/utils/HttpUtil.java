@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class HttpUtil {
 
-    private static OkHttpClient httpClient = new OkHttpClient.Builder().build();
+    private static final OkHttpClient httpClient = new OkHttpClient.Builder().build();
 
     public static byte[] doGet(String url, Map<String, String[]> header, Map<String, String[]> params, String expectContentType) {
         Request.Builder builder = new Request.Builder();
@@ -27,6 +27,13 @@ public class HttpUtil {
         Request.Builder builder = new Request.Builder().url(url);
         addHeader(builder, header);
         addBodyParam(builder, body, "POST");
+        return requestExec(builder.build(), expectContentType);
+    }
+
+    public static byte[] doPost(String url, Map<String, String[]> header, Map<String, String> body, String expectContentType,String nouse) {
+        Request.Builder builder = new Request.Builder().url(url);
+        addHeader(builder, header);
+        addBodyParam(builder, body, "POST","");
         return requestExec(builder.build(), expectContentType);
     }
 
@@ -76,6 +83,18 @@ public class HttpUtil {
         builder.method(method, formBodyBuilder.build());
     }
 
+    private static void addBodyParam(Request.Builder builder, Map<String, String> body, String method, String nouse) {
+        if (body == null) {
+            return;
+        }
+        FormBody.Builder formBodyBuilder = new FormBody.Builder(StandardCharsets.UTF_8);
+        for (String key : body.keySet()) {
+            String value = body.get(key);
+            formBodyBuilder.add(key, value);
+        }
+        builder.method(method, formBodyBuilder.build());
+    }
+
     private static byte[] requestExec(Request request, String expectContentType) {
         Objects.requireNonNull(request, "okHttp request is null");
 
@@ -87,7 +106,7 @@ public class HttpUtil {
                     if (contentType != null && !contentType.contains(expectContentType)) {
                         String res = new String(body.bytes(), StandardCharsets.UTF_8);
                         System.out.println(res);
-                        return null;
+                        return new byte[0];
                     }
                     return body.bytes();
                 }
