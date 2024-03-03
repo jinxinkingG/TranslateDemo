@@ -1,4 +1,4 @@
-package com.youdao.aicloud.translate.utils;
+package org.jojo.shell.translate.utils;
 
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
@@ -101,22 +101,19 @@ public class HttpUtil {
         try (Response response = httpClient.newCall(request).execute()) {
             if (response.code() == 200) {
                 ResponseBody body = response.body();
-                if (body != null) {
-                    String contentType = response.header("Content-Type");
-                    if (contentType != null && !contentType.contains(expectContentType)) {
-                        String res = new String(body.bytes(), StandardCharsets.UTF_8);
-                        System.out.println(res);
-                        return new byte[0];
-                    }
-                    return body.bytes();
+                String contentType = response.header("Content-Type");
+                if (contentType != null && !contentType.contains(expectContentType)) {
+                    String res = new String(body.bytes(), StandardCharsets.UTF_8);
+                    System.out.println(res);
+                    return new byte[0];
                 }
-                System.out.println("response body is null");
+                return body.bytes();
             } else {
                 System.out.println("request failed, http code: " + response.code());
             }
         } catch (IOException ioException) {
             System.out.println("request exec error: " + ioException.getMessage());
         }
-        return null;
+        return new byte[0];
     }
 }

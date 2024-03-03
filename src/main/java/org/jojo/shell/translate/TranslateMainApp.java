@@ -1,9 +1,9 @@
-package com.youdao.aicloud.translate;
+package org.jojo.shell.translate;
 
-import com.youdao.aicloud.translate.filters.YoudaoDictionaryFilter;
-import com.youdao.aicloud.translate.utils.AuthV3Util;
-import com.youdao.aicloud.translate.utils.HttpUtil;
-import com.youdao.aicloud.translate.utils.JsonUtil;
+import org.jojo.shell.translate.filters.YoudaoDictionaryFilter;
+import org.jojo.shell.translate.utils.HttpUtil;
+import org.jojo.shell.translate.utils.JsonUtil;
+import org.jojo.shell.translate.utils.AuthV3Util;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 /** 网易有道智云翻译服务api调用demo api接口: <a href="https://openapi.youdao.com/api">...</a> */
 public class TranslateMainApp {
 
-    public static final List<YoudaoDictionaryFilter> filters = new ArrayList<>();
+    protected static final List<YoudaoDictionaryFilter> filters = new ArrayList<>();
 
     static {
         filters.add(new YoudaoDictionaryFilter("","pic_dict",true));
@@ -32,7 +32,7 @@ public class TranslateMainApp {
         checkParams(args);
 
         if(args.length==1){
-            System.out.println(useYoudaoDictionary(args, filters));
+            System.out.println(useYoudaoDictionary(args));
             System.exit(1);
         }
         if(args.length>=2){
@@ -41,7 +41,7 @@ public class TranslateMainApp {
                 System.exit(1);
             }
             if("2".equals(args[1])){
-                System.out.println(useYoudaoDictionary(args, filters));
+                System.out.println(useYoudaoDictionary(args));
                 System.exit(1);
             }
         }
@@ -83,7 +83,7 @@ public class TranslateMainApp {
         return new String(bytes, StandardCharsets.UTF_8);
     }
 
-    public static String useYoudaoDictionary(String[] args, List<YoudaoDictionaryFilter> filters) {
+    public static String useYoudaoDictionary(String[] args) {
         // 添加请求参数
         Map<String, String> params = createRequestParams(args);
         // 请求api服务

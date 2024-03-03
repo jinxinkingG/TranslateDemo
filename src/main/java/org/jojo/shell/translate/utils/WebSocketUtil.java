@@ -1,4 +1,4 @@
-package com.youdao.aicloud.translate.utils;
+package org.jojo.shell.translate.utils;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -64,7 +64,7 @@ public class WebSocketUtil extends WebSocketListener {
      */
     public static void sendTextMessage(String textMsg) {
         if (webSocket == null) {
-            throw new RuntimeException("websocket connection not established");
+            throw new IllegalStateException("websocket connection not established");
         }
         webSocket.send(textMsg);
         System.out.println("send text message: " + textMsg);
@@ -77,7 +77,7 @@ public class WebSocketUtil extends WebSocketListener {
      */
     public static void sendBinaryMessage(ByteString binaryMsg) {
         if (webSocket == null) {
-            throw new RuntimeException("websocket connection not established");
+            throw new IllegalStateException("websocket connection not established");
         }
         webSocket.send(binaryMsg);
         System.out.println("send binary message length: " + binaryMsg.size());

@@ -1,4 +1,4 @@
-package com.youdao.aicloud.translate.utils;
+package org.jojo.shell.translate.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -9,6 +9,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public class FileUtil {
+
+    private FileUtil(){
+        throw new IllegalStateException("工具类禁止实例化!");
+    }
 
     public static String loadMediaAsBase64(String path) throws IOException {
         FileInputStream fileInputStream = new FileInputStream(path);
@@ -26,7 +30,10 @@ public class FileUtil {
     public static String saveFile(String path, byte[] data, boolean needDecode) throws IOException {
         File file = new File(path);
         if (!file.exists()) {
-            file.createNewFile();
+            boolean flag = file.createNewFile();
+            if (!flag) {
+                throw new IOException("create file failed");
+            }
         }
         byte[] bytes = data;
         if (needDecode) {

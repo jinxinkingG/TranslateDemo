@@ -1,6 +1,6 @@
-package com.youdao.aicloud.translate.utils;
+package org.jojo.shell.translate.utils;
 
-import com.youdao.aicloud.translate.filters.YoudaoDictionaryFilter;
+import org.jojo.shell.translate.filters.YoudaoDictionaryFilter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,7 +24,7 @@ public class JsonUtil {
      * @param jsonObject JSONObject对象
      * @return 返回解析后的字符串
      */
-    public static String parseJSONObject(JSONObject jsonObject,String prefix, Map<String,YoudaoDictionaryFilter> filterMap) {
+    public static String parseJSONObject(JSONObject jsonObject,String prefix, Map<String, YoudaoDictionaryFilter> filterMap) {
         StringBuilder returnStr = new StringBuilder();
         StringBuilder prefixBuilder = new StringBuilder(prefix);
         prefixBuilder.append("\t");

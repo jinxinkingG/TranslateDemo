@@ -1,4 +1,4 @@
-package com.youdao.aicloud.translate.filters;
+package org.jojo.shell.translate.filters;
 
 /**
  * @author jinxin

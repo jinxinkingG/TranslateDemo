@@ -1,4 +1,4 @@
-package com.youdao.aicloud.translate.enums;
+package org.jojo.shell.translate.enums;
 
 /**
  * @author jinxin
