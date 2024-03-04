@@ -55,7 +55,7 @@
                             <mainClass>org.jojo.shell.translate.TranslateMainApp</mainClass>
                         </manifest>
                     </archive>
-                    <descriptorRefs>jar-with-dependencies</descriptorRefs>
+                    <descriptorRefs>alpha</descriptorRefs>
                 </configuration>
                 <executions>
                     <execution>
