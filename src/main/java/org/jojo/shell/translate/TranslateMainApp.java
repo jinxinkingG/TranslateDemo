@@ -79,7 +79,6 @@ public class TranslateMainApp {
         AuthV3Util.addAuthParams(APP_KEY, APP_SECRET, params);
         // 请求api服务
         byte[] bytes = HttpUtil.doPost("https://openapi.youdao.com/api", null, params, "application/json");
-        System.out.println(new String(bytes, StandardCharsets.UTF_8));
         return new String(bytes, StandardCharsets.UTF_8);
     }
 

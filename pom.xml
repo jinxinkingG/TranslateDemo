@@ -44,7 +44,7 @@
                 </configuration>
             </plugin>
 
-            <!--  -->
+            <!-- 打包配置 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
