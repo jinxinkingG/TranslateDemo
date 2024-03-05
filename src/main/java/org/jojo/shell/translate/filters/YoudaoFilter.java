@@ -6,7 +6,7 @@ package org.jojo.shell.translate.filters;
  * @date 2024/3/2 21:52
  * @since 1.0.0
  */
-public class YoudaoDictionaryFilter implements JsonObjectFilter{
+public class YoudaoFilter implements JsonObjectFilter{
 
     private final String description;
 
@@ -14,7 +14,7 @@ public class YoudaoDictionaryFilter implements JsonObjectFilter{
 
     private final Boolean needFilter;
 
-    public YoudaoDictionaryFilter(String description, String fieldName, Boolean needFilter) {
+    public YoudaoFilter(String description, String fieldName, Boolean needFilter) {
         this.description = description;
         this.fieldName= fieldName;
         this.needFilter = needFilter;

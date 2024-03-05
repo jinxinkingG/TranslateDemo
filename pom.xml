@@ -33,6 +33,7 @@
     </dependencies>
 
     <build>
+        <finalName>YoudaoTranslate</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -55,7 +56,7 @@
                             <mainClass>org.jojo.shell.translate.TranslateMainApp</mainClass>
                         </manifest>
                     </archive>
-                    <descriptorRefs>alpha</descriptorRefs>
+                    <descriptorRefs>jar-with-dependencies</descriptorRefs>
                 </configuration>
                 <executions>
                     <execution>
@@ -63,6 +64,22 @@
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        <!-- 源码打包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>

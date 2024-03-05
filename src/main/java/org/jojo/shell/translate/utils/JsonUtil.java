@@ -1,6 +1,6 @@
 package org.jojo.shell.translate.utils;
 
-import org.jojo.shell.translate.filters.YoudaoDictionaryFilter;
+import org.jojo.shell.translate.filters.YoudaoFilter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,7 +24,7 @@ public class JsonUtil {
      * @param jsonObject JSONObject对象
      * @return 返回解析后的字符串
      */
-    public static String parseJSONObject(JSONObject jsonObject,String prefix, Map<String, YoudaoDictionaryFilter> filterMap) {
+    public static String parseJSONObject(JSONObject jsonObject,String prefix, Map<String, YoudaoFilter> filterMap) {
         StringBuilder returnStr = new StringBuilder();
         StringBuilder prefixBuilder = new StringBuilder(prefix);
         prefixBuilder.append("\t");
@@ -60,7 +60,7 @@ public class JsonUtil {
         return returnStr.toString();
     }
 
-    public static String parseJSONArray(JSONArray jsonArray,String prefix, Map<String,YoudaoDictionaryFilter> filterMap){
+    public static String parseJSONArray(JSONArray jsonArray,String prefix, Map<String, YoudaoFilter> filterMap){
         StringBuilder returnJson = new StringBuilder();
         StringBuilder prefixBuilder = new StringBuilder(prefix);
         prefixBuilder.append("\t");
@@ -77,7 +77,7 @@ public class JsonUtil {
         return returnJson.toString();
     }
 
-    public static String parseJSONObject(JSONObject jsonObject, Map<String, YoudaoDictionaryFilter> filterMap) {
+    public static String parseJSONObject(JSONObject jsonObject, Map<String, YoudaoFilter> filterMap) {
         return parseJSONObject(jsonObject, "", filterMap);
     }
 }
